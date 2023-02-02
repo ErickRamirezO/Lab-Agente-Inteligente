@@ -2,6 +2,17 @@
 #via liberada no aumenta un costo
 #camine o que se quede
 def funcion():
+	"""funcion que emula el comportamiento de un agente inteligente de un sistema automatizado de transito
+    Parametros:
+    ------------
+    No tiene parametros 
+
+    Retorna:
+    ------------
+    No retorna ningun valor
+
+    ---
+     """
 	#diccionario con estados de las vias
 	estados = {"Quito": "0", "Chone": "0", "Lorena": "0", "Pilatón": "0"}
 	#Inicializa una variable en este caso costo a 0
