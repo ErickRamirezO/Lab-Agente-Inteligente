@@ -1,65 +1,56 @@
-#1 no puede transitar aumenta el costo
-#via liberada no aumenta un costo
-#camine o que se quede
-def funcion():
-	"""funcion que emula el comportamiento de un agente inteligente de un sistema automatizado de transito
+def estadoActualVias(diccionario):
+	"""
+ Funcion que muestra la clave y el valor de cada via del diccionario estados
+ 
     Parametros:
     ------------
-    No tiene parametros 
-
-    Retorna:
+    diccionario: contiene todos los estados de las vias Quito, Chone, Lorena, Pilaton 
+ 
+    Retorno:
     ------------
     No retorna ningun valor
-
     ---
      """
-	#diccionario con estados de las vias
-	estados = {"Quito": "0", "Chone": "0", "Lorena": "0", "Pilatón": "0"}
-	#Inicializa una variable en este caso costo a 0
-	costo = 0
-	#solicitamos que ingrese la locacion inicial
-	primera_via = input("Ingrese la primera via: ")
-	#user_input El usuario señala SI la localizacion esta sucia o limpia
-	estado_via = input("Ingresa el estado de esa via: ")
-	#El usuario indicia el estado de la siguiente localizacion
-	estado_via2 = input("Ingresa el estado de la via 2: ")
-	#El usuario indicia el estado de la siguiente localizacion
-	estado_via3 = input("Ingresa el estado de la via 3: ")
-	#El usuario indicia el estado de la siguiente localizacion
-	estado_via4 = input("Ingresa el estado de la via 4: ")
+	print("\nEstados actuales de las vías:")
+	for key, value in diccionario.items():
+		print(f"{key}: {value}")
+	print("\n")
 
-	if primera_via == "quito":
-		print("Trasladandose a la via Quito")
-		# estado de via no liberada
-		if estado_via == '0':
-			print("Via ya esta liberada.")
+
+def transito(diccionario, costo):
+	"""
+ Funcion que emula el comportamiento de un agente inteligente de un sistema automatizado de transito
+ 
+    Parametros:
+    ------------
+    diccionario: contiene todos los estados de las vias Quito, Chone, Lorena, Pilaton 
+	costo: costo 
+ 
+    Retorno:
+    ------------
+    No retorna ningun valor
+    ---
+     """
+	for via in diccionario:
+		estado = input(f"Ingrese el estado de la vía {via}: ")
+		if estado != "0" and estado != "1":
+			print("Estado inválido.")
+			return
+		diccionario[via] = estado
+	estadoActualVias(diccionario)
+	for via in diccionario:
+		if diccionario[via] == "0":
+			print(f"La vía {via} ya está liberada.")
 		else:
-			estados["Quito"] = "1"
-			print("Via liberada.")
-	elif primera_via == "chone":
-		print("Trasladandose a la via Chone")
-		# estado de via no liberada
-		if estado_via == '0':
-			print("Via ya esta liberada.")
-		else:
-			estados["Chone"] = "1"
-			print("Via liberada.")
-	elif primera_via == "lorena":
-		print("Trasladandose a la via Lorena")
-		# estado de via no liberada
-		if estado_via == '0':
-			print("Via ya esta liberada.")
-		else:
-			estados["Lorena"] = "1"
-			print("Via liberada.")
-	else:
-		# estado de via no liberada
-		print("Trasladandose a la via Pilatón")
-		if estado_via == '0':
-			print("Via ya esta liberada.")
-		else:
-			estados["Pilatón"] = "1"
-			print("Via liberada.")
+			diccionario[via] = "0"
+			costo += 1
+			print(f"La vía {via} ha sido liberada.")
+	estadoActualVias(diccionario)
+	print("Costo actual:", costo)
+
 
 if __name__ == "__main__":
-	funcion()
+	estados = {"Quito": "0", "Chone": "0", "Lorena": "0", "Pilaton": "0"}
+	#Inicializa una variable en este caso costo a 0
+	costo = 0
+	transito(estados, costo)
