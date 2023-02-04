@@ -23,12 +23,12 @@ def estadoActualVias(diccionario):
 
 def transito(diccionario, costo):
 	"""
- Funcion que emula el comportamiento de un agente inteligente de un sistema automatizado de transito
+ Funcion que emula el comportamiento de un agente inteligente de un sistema automatizado de transito que modificará el estado de cada vía si es que la misma no se encuentra liberada.
  
     Parametros:
     ------------
     diccionario: contiene todos los estados de las vias Quito, Chone, Lorena, Pilaton 
-	costo: costo 
+	costo: costo que aumenta si una via se libera
  
     Retorno:
     ------------
@@ -43,7 +43,7 @@ def transito(diccionario, costo):
 		if estado != "0" and estado != "1":
 			#Imprime que el estado no es válido
 			print("Estado inválido.")
-			#retornamos el
+			#salimos de la función
 			return
 		# Asigna el estado ingresado a la vía actual en el diccionario
 		diccionario[via] = estado
@@ -66,7 +66,7 @@ def transito(diccionario, costo):
 	#llamamos a la funcion estadoActualVias
 	estadoActualVias(diccionario)
 	#Imprimimos el costo total por haber liberado las vías
-	print("Costo actual:", costo)
+	print("Costo total:", costo)
 
 
 if __name__ == "__main__":
