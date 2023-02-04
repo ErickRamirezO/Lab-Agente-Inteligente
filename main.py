@@ -38,7 +38,7 @@ def transito(diccionario, costo):
 	# Itera sobre las claves (nombres de las vías) en el diccionario
 	for via in diccionario:
 		# Solicita el estado de la vía actual
-		estado = input(f"Ingrese el estado de la vía {via}: ")
+		estado = input(f"Ingrese el estado de la vía {via} (1: Cerrado, 0: Abierto): ")
 		# Verifica que el estado sea válido (0 o 1)
 		if estado != "0" and estado != "1":
 			#Imprime que el estado no es válido
